@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-env
+data:
+  APPRES: "hello this environment variable is loaded from config map"
+  PORT: 8080

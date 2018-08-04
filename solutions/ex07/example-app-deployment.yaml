@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: example-app
+  name: example-app
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        io.kompose.service: example-app
+    spec:
+      containers:
+      - env:
+        - name: APPRES
+          valueFrom:
+                configMapKeyRef:
+                  # The ConfigMap containing the value you want to assign to SPECIAL_LEVEL_KEY
+                  name: example-app-data
+                  # Specify the key associated with the value
+                  key: PORT
+        image: idanshahar/example-app:1
+        name: example-app
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+      - name: acr-registry
+      restartPolicy: Always
