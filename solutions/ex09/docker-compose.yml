@@ -3,7 +3,7 @@ services:
   exampleApp:
     build:
       context: .
-    image: idanshahar/example-app:latest
+    image: idanshahar/example-app:ex09
     container_name: example-app
     ports:
         - "8080:8080"

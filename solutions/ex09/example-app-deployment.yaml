@@ -1,0 +1,37 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: example-app
+  name: example-app
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        io.kompose.service: example-app
+    spec:
+      containers:
+      - env:
+        - name: APPRES
+          valueFrom:
+            secretKeyRef:
+              name: example-app-secret
+              key: APPRES
+        - name: VOLUMEPATH
+          value: "/mnt/azure"
+        image: idanshahar/example-app:ex09
+        name: example-app
+        volumeMounts:
+        - mountPath: "/mnt/azure"
+          name: volume
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+      - name: acr-registry
+      restartPolicy: Always
+      volumes:
+      - name: volume
+        persistentVolumeClaim:
+          claimName: azurefile

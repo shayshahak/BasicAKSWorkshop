@@ -1,7 +1,7 @@
 const http = require('http');
 const port = process.env.PORT || 8080;
-const text = process.env.APPRES || "Hello dev/ops guys";
 const requestHandler = (request, response) => {
+  text = process.env.APPRES || "Hello dev/ops guys";
   console.log(request.url);
   response.end(text);
 }

@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: example-app
+  name: example-app
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        io.kompose.service: example-app
+    spec:
+      containers:
+      - env:
+        - name: APPRES
+          valueFrom:
+            secretKeyRef:
+              name: example-app-secret
+              key: APPRES
+        image: idanshahar/example-app:1
+        name: example-app
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+      - name: acr-registry
+      restartPolicy: Always

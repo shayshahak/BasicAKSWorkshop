@@ -19,6 +19,10 @@ Usefull Resources
 - *[Integrate ACR with AKS](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auth-aks)*
 - *[Helm quickstart guide](https://docs.helm.sh/using_helm/#quickstart)*
 - *[The unofficial Kubernetes docs](https://unofficial-kubernetes.readthedocs.io/en/latest/)*
+- *[Kubernetes Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)*
+- *[AKS Documentation](https://docs.microsoft.com/gl-es/azure/aks/)*
+
+
 
 Workshop
 --------
@@ -37,17 +41,16 @@ Bonus - use docker-compose
 Write deployment.yaml & service.yaml files that describe your application. Specify the Environment variable.
 Make sure you app will always run and automatcally recreated in failures. Make tha app accessible from the internet. (hint - choose the right Kubernetes service type)
 
-6. Change the environment variable and upgrade your application. Make sure it's chaned in ZERO DOWNTIME!
+6. Change the environment variable and upgrade your application. Make sure it's changed in ZERO DOWNTIME!
 
 7. Move the environment variable to configmap and change the deployment to read the env from config map.
+- *Bonus - use configmap as volume instead of env.*
 
-8. Use configmap as volume instead of env.
+8. Use secret as env intead of configmap.
 
-9. Use secret as env intead of configmap.
+9. Use Azure files as the container persistance data, drop file into azure files and display the filename in your app.
 
-10. Use Azure files as the container persistance data, drop file into azure files and show a message on that new file in your app.
-
-12. Write an helm chart and use it to deploy, upgrade and rollback your app.
+10. Write an helm chart and use it to deploy your app.
 
 - *Bonus*: 
 Integrate your cluster with ACI and deploy your application into ACI.
